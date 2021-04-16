@@ -8,11 +8,11 @@ apt update
 echo "${green}Install nginx${reset}"
 apt install -y -q nginx
 echo "${green}Install php 7.4${reset}"
-sudo apt -y  install software-properties-common
-sudo apt install -y -q php7.4-{bcmath,bz2,cli,common,curl,dev,dom,exif,fpm,ftp,gd,gmp,iconv,imagick,imap,intl,json,mbstring,mysql,opcache,posix,simplexml,soap,sockets,ssh2,tokenizer,xml,xmlreader,xmlrpc,zip}
+apt -y  install software-properties-common
+apt install -y -q php7.4-{bcmath,bz2,cli,common,curl,dev,dom,exif,fpm,ftp,gd,gmp,iconv,imagick,imap,intl,json,mbstring,mysql,opcache,posix,simplexml,soap,sockets,ssh2,tokenizer,xml,xmlreader,xmlrpc,zip}
 
 echo "${green}Install mysql8${reset}"
-apt install -y -q mysql-server
+apt install -y -q mysql-server && mysql_secure_installation
 echo "${green}Adding www user. You will now be asked for password${reset}"
 groupadd www
 mkdir /var/www
