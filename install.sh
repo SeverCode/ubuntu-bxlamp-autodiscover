@@ -7,6 +7,7 @@ echo "${green}Updating system${reset}"
 apt update
 echo "${green}Install nginx${reset}"
 apt install -y -q nginx
+apt install -y -q certbot python3-certbot-nginx
 echo "${green}Install php 7.4${reset}"
 apt -y  install software-properties-common
 apt install -y -q php7.4-{bcmath,bz2,cli,common,curl,dev,dom,exif,fpm,ftp,gd,gmp,iconv,imagick,imap,intl,json,mbstring,mysql,opcache,posix,simplexml,soap,sockets,ssh2,tokenizer,xml,xmlreader,xmlrpc,zip}
