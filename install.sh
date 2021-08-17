@@ -6,7 +6,7 @@ reset=`tput sgr0`
 echo "${green}Updating system${reset}"
 apt update
 echo "${green}Install nginx${reset}"
-apt install -y -q nginx
+apt install -y -q nginx curl
 apt install -y -q certbot python3-certbot-nginx
 echo "${green}Install php 7.4${reset}"
 apt -y  install software-properties-common
