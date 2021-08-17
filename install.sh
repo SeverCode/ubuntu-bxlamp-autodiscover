@@ -217,11 +217,13 @@ php_admin_value[error_log] = /var/log/php-fpm-error.log" >> /etc/php/7.4/fpm/poo
 
 sed -i 's/user www-data/user www/g' /etc/nginx/nginx.conf
 
-php-fpm7.4 -tt
+php-fpm7.4 -t
 
 echo "${green}Restarting services${reset}"
 service nginx restart
 service php7.4-fpm restart
+
+certbot
 
 curl -i ${website}
 
