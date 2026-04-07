@@ -317,9 +317,9 @@ server {
     listen 80;
     listen [::]:80;
     server_name ${website} www.${website};
-    root \$root_path;
-    set \$root_path /var/www/${website}/public_html;
-    set \$php_sock unix:/var/www/php-fpm/php.sock;
+    root \\\$root_path;
+    set \\\$root_path /var/www/${website}/public_html;
+    set \\\$php_sock unix:/var/www/php-fpm/php.sock;
     access_log /var/log/nginx/${website}.access.log;
     error_log /var/log/nginx/${website}.error.log warn;
     include \"base.conf\";
