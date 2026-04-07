@@ -312,19 +312,20 @@ if ! grep -q "${website}" /etc/hosts; then
     execute "Updating hosts file" "echo -e \"127.0.0.1\\t${website}\\twww.${website}\" >> /etc/hosts"
 fi
 
-execute "Creating Nginx site config" "cat > /etc/nginx/sites-enabled/${website}.conf << EOF
+echo "${green}==> Creating Nginx site config${reset}"
+cat > "/etc/nginx/sites-enabled/${website}.conf" << EOF
 server {
     listen 80;
     listen [::]:80;
     server_name ${website} www.${website};
-    root \\\$root_path;
-    set \\\$root_path /var/www/${website}/public_html;
-    set \\\$php_sock unix:/var/www/php-fpm/php.sock;
+    root \$root_path;
+    set \$root_path /var/www/${website}/public_html;
+    set \$php_sock unix:/var/www/php-fpm/php.sock;
     access_log /var/log/nginx/${website}.access.log;
     error_log /var/log/nginx/${website}.error.log warn;
-    include \"base.conf\";
+    include "base.conf";
 }
-EOF"
+EOF
 
 execute "Removing default Nginx site" "rm -f /etc/nginx/sites-enabled/default"
 execute "Testing Nginx configuration" "nginx -t"
